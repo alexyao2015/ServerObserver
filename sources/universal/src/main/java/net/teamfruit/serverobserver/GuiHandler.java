@@ -444,7 +444,8 @@ public class GuiHandler {
 						}
 					}
 				}
-				this.targetServerStatus = this.compat.getPinged(serverData)&&serverData.pingToServer>=0&&checkPopulation;
+//				this.targetServerStatus = this.compat.getPinged(serverData)&&serverData.pingToServer>=0&&checkPopulation;
+				this.targetServerStatus = true;
 				// Log.log.info("pinged: {}, pingms: {}", serverData.pinged, serverData.pingToServer);
 				if (this.targetServerStatus)
 					if (before!=null&&!before) {
@@ -541,7 +542,7 @@ public class GuiHandler {
 	private void ping(final GuiMultiplayer mpgui, final ServerData serverData) {
 		if (!this.compat.getPinged(serverData)) {
 			this.compat.setPinged(serverData, true);
-			serverData.pingToServer = -2L;
+			serverData.pingToServer = 10L;
 			serverData.serverMOTD = "";
 			serverData.populationInfo = "";
 			this.compat.getThreadPool().submit(() -> {
